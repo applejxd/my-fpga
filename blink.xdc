@@ -1,3 +1,4 @@
+# see this: https://github.com/Digilent/digilent-xdc/blob/master/Arty-S7-50-Master.xdc
 ## Arty S7-50 constraints (blink)
 
 # 100 MHz clock (on-board oscillator)
