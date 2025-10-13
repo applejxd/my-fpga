@@ -5,9 +5,9 @@
 /* URL: https://www.shuwasystem.co.jp/support/7980html/6326.html */
 
 module blink (
-    input               CLK,
-    input               RST,
-    output  reg [3:0]   LED
+    input               CLK,    // 100MHzクロック入力
+    input               RST,    // 非同期リセット入力（アクティブハイ）
+    output  reg [3:0]   LED     // LED出力
 );
 
 /* システムクロックを分周 */
