@@ -1,0 +1,3 @@
+[submodule "third_party/cpubook"]
+	path = third_party/cpubook
+	url = https://github.com/amane-uehara/cpubook-code.git
