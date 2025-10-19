@@ -28,7 +28,7 @@ wire ledcnten = (cnt23==23'h7fffff);
 // 0〜5の6状態をカウント（往復パターン用）
 reg [2:0] cnt3;
 
-always @( posedge CLK ) begin
+always @( pos ) begin
     if ( RST )
         cnt3 <= 3'h0;  // リセット時に0に戻す
     else if ( ledcnten )  // 分周カウンタが最大値のときのみ更新
