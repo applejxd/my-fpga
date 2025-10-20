@@ -1,0 +1,46 @@
+# Vivado プロジェクトの .gitignore
+
+# ビルド成果物
+*.bit
+*.bin
+*.mcs
+*.prm
+
+# Vivado 一時ファイルとディレクトリ
+*.cache/
+*.hw/
+*.runs/
+*.sim/
+*.ip_user_files/
+*.srcs/sources_1/ip/
+*.srcs/sources_1/bd/*/hdl/
+*.gen/
+
+# Design Checkpoint ファイル
+*.dcp
+
+# ログファイル
+*.log
+*.jou
+*.debug
+*.str
+*.tcl.backup
+
+# シミュレーション関連
+xsim.dir/
+*.wdb
+*.wcfg
+*.vcd
+webtalk*.xml
+webtalk*.jou
+
+# OS 固有のファイル
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# バージョン管理するファイル:
+# - HDL/ (ソースコード)
+# - *.xdc (制約ファイル)
+# - *.xpr (プロジェクトファイル) ※チームの方針による
