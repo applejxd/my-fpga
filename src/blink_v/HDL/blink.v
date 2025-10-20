@@ -10,12 +10,13 @@ module blink (
     output  reg [3:0]   LED     // LED出力
 );
 
-/* システムクロックを分周 */
+// 分周カウンタ
 // 23ビットカウンタで約0.084秒周期を生成（100MHz想定: 2^23 / 100MHz ≒ 84ms）
 reg [22:0] cnt23;
-
+// 分周器 (prescaler)
 always @( posedge CLK ) begin
-    if ( RST )
+    // 負論理リセット
+    if ( ~RST )
         cnt23 <= 23'h0;  // リセット時にカウンタをクリア
     else
         cnt23 <= cnt23 + 1'h1;  // クロックごとにインクリメント
@@ -24,21 +25,23 @@ end
 // カウンタが最大値に達したらLEDカウンタを更新
 wire ledcnten = (cnt23==23'h7fffff);
 
-/* LED用6進カウンタ */
+// LED用6進カウンタ
 // 0〜5の6状態をカウント（往復パターン用）
 reg [2:0] cnt3;
-
-always @( pos ) begin
-    if ( RST )
+// リセット付き DFF によるカウンタ更新
+always @( posedge CLK ) begin
+    // 負論理リセット・分周カウンタが最大値のときのみ更新
+    if ( ~RST )
         cnt3 <= 3'h0;  // リセット時に0に戻す
-    else if ( ledcnten )  // 分周カウンタが最大値のときのみ更新
-        if ( cnt3==3'd5)
-            cnt3 <=3'h0;  // 5の次は0に戻る
-        else
-            cnt3 <= cnt3 + 1'h1;  // 0→1→2→3→4→5とカウントアップ
+    else
+        if ( ledcnten )
+            if ( cnt3==3'd5)
+                cnt3 <=3'h0;  // 5の次は0に戻る
+            else
+                cnt3 <= cnt3 + 1'h1;  // 0→1→2→3→4→5とカウントアップ
 end
 
-/* LEDデコーダ */
+// LEDデコーダ
 // カウント値に応じてLEDを点灯（往復パターン: 右→左→右）
 always @* begin
     case ( cnt3 )

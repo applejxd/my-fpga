@@ -44,9 +44,6 @@ set_property -dict { PACKAGE_PIN H15   IOSTANDARD LVCMOS33 } [get_ports { LED[3]
 #set_property -dict { PACKAGE_PIN J16   IOSTANDARD LVCMOS33 } [get_ports { btn[2] }]; #IO_L19N_T3_A21_VREF_15 Sch=btn[2]
 #set_property -dict { PACKAGE_PIN H13   IOSTANDARD LVCMOS33 } [get_ports { btn[3] }]; #IO_L20P_T3_A20_15 Sch=btn[3]
 
-# Reset -> use push button BTN0 (active-high)
-set_property -dict { PACKAGE_PIN G15   IOSTANDARD LVCMOS33 } [get_ports { RST }]; #IO_L18N_T2_A23_15 Sch=btn[0]
-
 ## Pmod Header JA
 #set_property -dict { PACKAGE_PIN L17   IOSTANDARD LVCMOS33 } [get_ports { ja[0] }]; #IO_L4P_T0_D04_14 Sch=ja_p[1]
 #set_property -dict { PACKAGE_PIN L18   IOSTANDARD LVCMOS33 } [get_ports { ja[1] }]; #IO_L4N_T0_D05_14 Sch=ja_n[1]
@@ -182,6 +179,9 @@ set_property -dict { PACKAGE_PIN G15   IOSTANDARD LVCMOS33 } [get_ports { RST }]
 ## Misc. ChipKit Ports
 #set_property -dict { PACKAGE_PIN K13   IOSTANDARD LVCMOS33 } [get_ports { ck_ioa }]; #IO_25_15 Sch=ck_ioa
 #set_property -dict { PACKAGE_PIN C18   IOSTANDARD LVCMOS33 } [get_ports { ck_rst }]; #IO_L11N_T1_SRCC_15
+
+# Reset -> use push button BTN0 (active-high)
+set_property -dict { PACKAGE_PIN C18   IOSTANDARD LVCMOS33 } [get_ports { RST }]; #IO_L11N_T1_SRCC_15
 
 ## Quad SPI Flash
 ## Note: the SCK clock signal can be driven using the STARTUPE2 primitive
